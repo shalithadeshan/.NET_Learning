@@ -23,6 +23,7 @@ namespace EFCoreRelationships.Controllers
             var characters = await _context.Characters
                 .Where(x => x.UserId == userId)
                 .Include(y => y.Weapon)
+                .Include(z => z.Skills)
                 .ToListAsync();
             if (characters == null)
             {
@@ -65,5 +66,31 @@ namespace EFCoreRelationships.Controllers
 
             return character; 
         }
+
+
+
+        [HttpPost("skill")]
+        public async Task<ActionResult<Character>> AddCharacterSkill(AddCharacterSkillDto request)
+        {
+
+            var character = await _context.Characters
+                .Where(c => c.Id == request.CharacterId)
+                .Include(c => c.Skills)
+                .FirstOrDefaultAsync();
+            if (character == null)
+                return NotFound();
+            
+            var skill = await _context.Skills.FindAsync(request.SkillId);
+            if (skill == null)
+                return NotFound();
+
+            
+
+            character.Skills.Add(skill);
+            await _context.SaveChangesAsync();
+
+            return character;
+        }
+
     }
 }
