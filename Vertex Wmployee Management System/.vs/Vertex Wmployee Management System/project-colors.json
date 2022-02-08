@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a64e4661-1397-44b5-89fa-9537b081a115": {
+      "ProjectGuid": "a64e4661-1397-44b5-89fa-9537b081a115",
+      "DisplayName": "Vertex.EMS.Api",
+      "ColorIndex": 0
+    },
+    "cb05c80e-5389-4d1c-99c8-3c928f1d559b": {
+      "ProjectGuid": "cb05c80e-5389-4d1c-99c8-3c928f1d559b",
+      "DisplayName": "Vertex.EMS.Infrastructure",
+      "ColorIndex": 1
+    },
+    "8af59c3d-4a28-43a7-a313-a311399b6449": {
+      "ProjectGuid": "8af59c3d-4a28-43a7-a313-a311399b6449",
+      "DisplayName": "Vertex.EMS.Application",
+      "ColorIndex": 2
+    },
+    "432387f9-b470-4544-8de2-7b2bb280cb0a": {
+      "ProjectGuid": "432387f9-b470-4544-8de2-7b2bb280cb0a",
+      "DisplayName": "Vertex.EMS.Domain",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
