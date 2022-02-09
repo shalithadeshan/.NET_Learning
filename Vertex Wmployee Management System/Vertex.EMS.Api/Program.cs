@@ -1,4 +1,5 @@
-using Vertex.EMS.Infrastructure;
+ using Vertex.EMS.Infrastructure;
+using Vertex.EMS.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,5 +25,17 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var appDbContext = services.GetRequiredService<AppDbContext>();
+
+//    await AppDbContextSeed.SeedDepartmentAsync(appDbContext);
+//}
+
+
+
 
 app.Run();

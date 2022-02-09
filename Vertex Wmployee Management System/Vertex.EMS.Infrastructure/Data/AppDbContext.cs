@@ -8,14 +8,15 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Infrastructure.Data
 {
-    public class AppDbContext : DbContext
+    internal class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
 
-       private DbSet<Department>? Deparments { get; set; }
-        private DbSet<Employee>? Employees { get; set;}
+        public DbSet<Department>? Deparments { get; set; }
+        public DbSet<Employee>? Employees { get; set;}
     }
 }
+ 

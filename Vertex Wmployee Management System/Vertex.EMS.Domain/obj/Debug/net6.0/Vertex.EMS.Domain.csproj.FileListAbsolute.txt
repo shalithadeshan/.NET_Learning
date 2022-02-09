@@ -9,3 +9,4 @@ E:\Learning\Dotnet-Learning\Vertex Wmployee Management System\Vertex.EMS.Domain\
 E:\Learning\Dotnet-Learning\Vertex Wmployee Management System\Vertex.EMS.Domain\obj\Debug\net6.0\Vertex.EMS.Domain.dll
 E:\Learning\Dotnet-Learning\Vertex Wmployee Management System\Vertex.EMS.Domain\obj\Debug\net6.0\ref\Vertex.EMS.Domain.dll
 E:\Learning\Dotnet-Learning\Vertex Wmployee Management System\Vertex.EMS.Domain\obj\Debug\net6.0\Vertex.EMS.Domain.pdb
+E:\Learning\Dotnet-Learning\Vertex Wmployee Management System\Vertex.EMS.Domain\obj\Debug\net6.0\Vertex.EMS.Domain.csproj.AssemblyReference.cache

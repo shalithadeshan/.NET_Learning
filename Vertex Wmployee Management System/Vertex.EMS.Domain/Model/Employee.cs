@@ -11,5 +11,6 @@ namespace Vertex.EMS.Domain.Model
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public int Age { get; set; }
+        public Department? Department { get; set; } 
     }
 }
