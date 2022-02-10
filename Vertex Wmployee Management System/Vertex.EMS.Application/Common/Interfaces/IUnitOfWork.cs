@@ -8,7 +8,7 @@ namespace Vertex.EMS.Application.Common.Interfaces
 {
     public interface IUnitOfWork
     {
-        IDepartmentRepository Department { get; }
-        IEmployeeRepository Employee { get; }
+        IDepartmentRepository DepartmentRepository { get; }
+        IEmployeeRepository EmployeeRepository { get; }
     }
 }

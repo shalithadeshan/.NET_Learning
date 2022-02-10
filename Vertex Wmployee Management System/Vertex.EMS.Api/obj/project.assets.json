@@ -707,6 +707,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1",
           "Vertex.EMS.Domain": "1.0.0"
         },
         "compile": {

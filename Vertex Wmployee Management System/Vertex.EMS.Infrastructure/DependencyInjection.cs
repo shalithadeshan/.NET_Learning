@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Vertex.EMS.Infrastructure.Data;
+using Vertex.EMS.Application.Common.Interfaces;
+using Vertex.EMS.Infrastructure.Data.Repositories;
 
 namespace Vertex.EMS.Infrastructure
 {
@@ -24,6 +26,10 @@ namespace Vertex.EMS.Infrastructure
                 config.UseSqlServer(connectionString);
                 config.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
+
+
+            services.AddScoped<IAppDbContext, AppDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
 

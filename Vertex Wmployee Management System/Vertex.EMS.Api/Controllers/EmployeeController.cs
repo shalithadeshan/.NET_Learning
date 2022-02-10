@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Vertex.EMS.Application.Common.Interfaces;
+using Vertex.EMS.Domain.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,11 +10,21 @@ namespace Vertex.EMS.Api.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+
+        public IUnitOfWork UnitOfWork { get; }
+
+        public EmployeeController(IUnitOfWork unitOfWork)
+        {
+            UnitOfWork = unitOfWork;
+        }
+
+
+       
         // GET: api/<EmployeeController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Employee> Get()
         {
-            return new string[] { "value1", "value2" };
+            return UnitOfWork.EmployeeRepository.GetEmployees();
         }
 
         // GET api/<EmployeeController>/5
