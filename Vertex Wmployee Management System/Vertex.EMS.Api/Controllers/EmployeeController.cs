@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Vertex.EMS.Application.Common.Interfaces;
 using Vertex.EMS.Domain.Model;
 
@@ -10,12 +11,15 @@ namespace Vertex.EMS.Api.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        private readonly IAppDbContext _appDbContext;
 
         public IUnitOfWork UnitOfWork { get; }
 
-        public EmployeeController(IUnitOfWork unitOfWork)
+
+        public EmployeeController(IUnitOfWork unitOfWork, IAppDbContext appDbContext)
         {
             UnitOfWork = unitOfWork;
+            _appDbContext = appDbContext;
         }
 
 
@@ -24,7 +28,14 @@ namespace Vertex.EMS.Api.Controllers
         [HttpGet]
         public IEnumerable<Employee> Get()
         {
-            return UnitOfWork.EmployeeRepository.GetEmployees();
+
+            var b = _appDbContext.Employees.Include(x => x.Department)
+                .ToList()
+                .Where(x => x.Age > 0);
+
+
+
+            return b;
         }
 
         // GET api/<EmployeeController>/5
