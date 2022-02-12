@@ -28,7 +28,7 @@ namespace Vertex.EMS.Infrastructure
             });
 
 
-            services.AddScoped<IAppDbContext, AppDbContext>();
+            // services.AddScoped<IAppDbContext, AppDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

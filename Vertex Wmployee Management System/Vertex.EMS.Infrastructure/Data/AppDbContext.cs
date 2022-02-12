@@ -9,7 +9,7 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Infrastructure.Data
 {
-    internal class AppDbContext : DbContext, IAppDbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

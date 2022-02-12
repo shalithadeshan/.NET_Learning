@@ -11,31 +11,22 @@ namespace Vertex.EMS.Api.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IAppDbContext _appDbContext;
 
-        public IUnitOfWork UnitOfWork { get; }
+        public IUnitOfWork _unitOfWork { get; }
 
 
-        public EmployeeController(IUnitOfWork unitOfWork, IAppDbContext appDbContext)
+        public EmployeeController(IUnitOfWork unitOfWork)
         {
-            UnitOfWork = unitOfWork;
-            _appDbContext = appDbContext;
+            _unitOfWork = unitOfWork;
         }
 
 
        
         // GET: api/<EmployeeController>
         [HttpGet]
-        public IEnumerable<Employee> Get()
+        public async Task<IEnumerable<Employee>> Get()
         {
-
-            var b = _appDbContext.Employees.Include(x => x.Department)
-                .ToList()
-                .Where(x => x.Age > 0);
-
-
-
-            return b;
+            return await _unitOfWork.EmployeeRepository.FindAllWithIncludeAsync(x => x.Department);
         }
 
         // GET api/<EmployeeController>/5

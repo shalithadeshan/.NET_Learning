@@ -9,19 +9,21 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Infrastructure.Data.Repositories
 {
-    internal class EmployeeRepository : IEmployeeRepository
+    internal class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
     {
-        private readonly IAppDbContext _appDbContext;
+      
 
-        public EmployeeRepository(IAppDbContext appDbContext)
+        public EmployeeRepository(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
-
-        public List<Employee> GetEmployees()
+        public async Task<List<Employee>> GetEmployeesGreaterThan10Async()
         {
-            return _appDbContext.Employees.Include(x => x.Department).ToList();
+            var result = await _appDbContext.Employees.Where(x => x.Age > 10)
+                .Include(x => x.Department)
+                .ToListAsync();
+
+            return result;
         }
     }
 }

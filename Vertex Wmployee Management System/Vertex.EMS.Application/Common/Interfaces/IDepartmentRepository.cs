@@ -7,8 +7,8 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Application.Common.Interfaces
 {
-    public interface IDepartmentRepository
+    public interface IDepartmentRepository : IRepositoryBase<Department>
+
     {
-        List<Department> GetDepartments();
     }
 }

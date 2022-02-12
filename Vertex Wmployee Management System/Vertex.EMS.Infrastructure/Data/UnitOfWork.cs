@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vertex.EMS.Application.Common.Interfaces;
+﻿using Vertex.EMS.Application.Common.Interfaces;
 
 namespace Vertex.EMS.Infrastructure.Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IAppDbContext _appDbContext;
+        private AppDbContext _appDbContext;
 
         private IDepartmentRepository _departmentRepository;
         private IEmployeeRepository _employeeRepository;
@@ -36,7 +31,7 @@ namespace Vertex.EMS.Infrastructure.Data.Repositories
             }
         }
 
-        public UnitOfWork(IAppDbContext appDbContext)
+        public UnitOfWork(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
 

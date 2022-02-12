@@ -8,19 +8,12 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Infrastructure.Data.Repositories
 {
-    public class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : RepositoryBase<Department>, IDepartmentRepository
     {
-        private readonly IAppDbContext _appDbContext;
 
-        public DepartmentRepository(IAppDbContext appDbContext)
+        public DepartmentRepository(AppDbContext appDbContext) : base(appDbContext)
         {
-            _appDbContext = appDbContext;
         }
 
-
-        public List<Department> GetDepartments()
-        {
-            return _appDbContext.Deparments.ToList();
-        }
     }
 }
