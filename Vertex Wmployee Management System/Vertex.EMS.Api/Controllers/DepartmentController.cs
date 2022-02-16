@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Vertex.EMS.Application.Common.Interfaces;
 using Vertex.EMS.Domain.Model;
 
@@ -7,52 +6,51 @@ using Vertex.EMS.Domain.Model;
 
 namespace Vertex.EMS.Api.Controllers
 {
-    [Route("api/employee")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class DepartmentController : ControllerBase
     {
-
         public IUnitOfWork _unitOfWork { get; }
 
-
-        public EmployeeController(IUnitOfWork unitOfWork)
+        public DepartmentController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
 
-       
-        // GET: api/<EmployeeController>
+
+
+        // GET: api/<DepartmentController>
         [HttpGet]
-        public async Task<IEnumerable<Employee>> Get()
+        public async Task<IEnumerable<Department>> Get()
         {
-            return await _unitOfWork.EmployeeRepository.FindAllWithIncludeAsync(x => x.Department);
+            return await _unitOfWork.DepartmentRepository.FindAllAsync();
         }
 
-        // GET api/<EmployeeController>/5
+        // GET api/<DepartmentController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<EmployeeController>
+        // POST api/<DepartmentController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
-            //return await _unitOfWork.EmployeeRepository.CreateAsync(value);
         }
 
-        // PUT api/<EmployeeController>/5
+        // PUT api/<DepartmentController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<EmployeeController>/5
+        // DELETE api/<DepartmentController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            //return await _unitOfWork.DepartmentRepository.DeleteAsync();
         }
     }
 }

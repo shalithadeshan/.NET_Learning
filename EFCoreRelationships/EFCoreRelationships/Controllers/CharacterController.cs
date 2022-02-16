@@ -18,7 +18,7 @@ namespace EFCoreRelationships.Controllers
         // get charactors that belongs to user
 
         [HttpGet]
-        public async Task<ActionResult<List<Character>>> Get(int userId)
+        public async Task<ActionResult<List<Character>>> GetCharacter(int userId)
         {
             var characters = await _context.Characters
                 .Where(x => x.UserId == userId)
@@ -41,56 +41,12 @@ namespace EFCoreRelationships.Controllers
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
 
-            return await Get(character.UserId);
+            return await GetCharacter(character.UserId);
         }
 
 
 
-        [HttpPost("weapon")]
-        public async Task<ActionResult<Character>> AddWeapon(Weapon weapon)
-        {
-
-            var character = await _context.Characters.FindAsync(weapon.CharacterId);
-            if (character == null)
-                return NotFound();
-
-            var newWeapon = new Weapon
-            {
-                Name = weapon.Name,
-                Damage = weapon.Damage,
-                Character = character
-            };
-
-            _context.Weapons.Add(newWeapon);
-            await _context.SaveChangesAsync();
-
-            return character; 
-        }
-
-
-
-        [HttpPost("skill")]
-        public async Task<ActionResult<Character>> AddCharacterSkill(AddCharacterSkillDto request)
-        {
-
-            var character = await _context.Characters
-                .Where(c => c.Id == request.CharacterId)
-                .Include(c => c.Skills)
-                .FirstOrDefaultAsync();
-            if (character == null)
-                return NotFound();
-            
-            var skill = await _context.Skills.FindAsync(request.SkillId);
-            if (skill == null)
-                return NotFound();
-
-            
-
-            character.Skills.Add(skill);
-            await _context.SaveChangesAsync();
-
-            return character;
-        }
+   
 
     }
 }
